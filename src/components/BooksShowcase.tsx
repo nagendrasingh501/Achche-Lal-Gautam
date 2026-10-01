@@ -1318,8 +1318,6 @@ export function BooksShowcase({
     }
 
     // Frame loop
-    const timer = new THREE.Timer();
-    timer.connect(document);
     const idle = RM ? 0 : 1;
     const DETAIL_OPEN_ANGLE = 0.88;
     const DETAIL_OPEN_SWAY = 0.035;
@@ -1555,7 +1553,6 @@ export function BooksShowcase({
       cancelled = true;
       timeouts.forEach(clearTimeout);
       cancelAnimationFrame(animId);
-      timer.disconnect();
       ro.disconnect();
       canvas.removeEventListener('contextmenu', onContextMenu);
       canvas.removeEventListener('pointerleave', onPointerLeave);
