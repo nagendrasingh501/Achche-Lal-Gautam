@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="c" width="1024" height="1536"></canvas>
+<script>
+    const c = document.getElementById('c');
+    const x = c.getContext('2d');
+    const w = 1024;
+    const h = 1536;
+    const bg = '#1a1a1a';
+    const title = 'CRIMINAL LAW';
+
+    // 1. Rich gradient background to simulate lighting on leather
+    const grad = x.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, bg);
+    x.fillStyle = bg; x.fillRect(0, 0, w, h);
+    x.fillStyle = 'rgba(0,0,0,0.4)'; x.fillRect(0, 0, w, h); // darken layer
+    const glow = x.createRadialGradient(w/2, h/3, 0, w/2, h/3, w);
+    glow.addColorStop(0, bg);
+    glow.addColorStop(1, 'rgba(0,0,0,0.8)');
+    x.fillStyle = glow; x.fillRect(0, 0, w, h);
+
+    // 2. Ornate Gold Foil Borders
+    const goldGrad = x.createLinearGradient(0, 0, w, h);
+    goldGrad.addColorStop(0, '#ebd197');
+    goldGrad.addColorStop(0.5, '#ffd700');
+    goldGrad.addColorStop(1, '#b8860b');
+    
+    x.strokeStyle = goldGrad;
+    
+    // Outer thick border
+    x.lineWidth = 12;
+    x.strokeRect(50, 50, w - 100, h - 100);
+    
+    // Inner thin border
+    x.lineWidth = 3;
+    x.strokeRect(75, 75, w - 150, h - 150);
+    
+    // Corner flourishes (simple squares for now)
+    x.fillStyle = goldGrad;
+    const cs = 20;
+    x.fillRect(75 - cs/2, 75 - cs/2, cs, cs);
+    x.fillRect(w - 75 - cs/2, 75 - cs/2, cs, cs);
+    x.fillRect(75 - cs/2, h - 75 - cs/2, cs, cs);
+    x.fillRect(w - 75 - cs/2, h - 75 - cs/2, cs, cs);
+
+    // 3. Top Label
+    x.textAlign = 'center';
+    x.font = '600 32px "Times New Roman", serif';
+    if('letterSpacing' in x) x.letterSpacing = '6px';
+    x.fillStyle = 'rgba(255,255,255,0.6)';
+    x.fillText('PRACTICE AREA', w / 2, 220);
+
+    // 4. Scales of Justice Icon / Emblem
+    x.font = '120px serif';
+    x.fillStyle = goldGrad;
+    x.fillText('⚖', w / 2, 400);
+
+    // 5. Main Title (Gold foil look with drop shadow)
+    x.shadowColor = 'rgba(0,0,0,0.8)';
+    x.shadowBlur = 15;
+    x.shadowOffsetX = 0;
+    x.shadowOffsetY = 5;
+    
+    x.fillStyle = goldGrad; 
+    x.font = '800 85px "Times New Roman", serif';
+    if('letterSpacing' in x) x.letterSpacing = '2px';
+    
+    const words = title.split(' ');
+    let line = ''; const lines = [];
+    words.forEach(word => {
+        const test = line ? line + ' ' + word : word;
+        if (x.measureText(test).width > w * 0.7 && line) { lines.push(line); line = word; } else line = test;
+    });
+    if (line) lines.push(line);
+    
+    const startY = 650;
+    lines.forEach((l, i) => x.fillText(l.toUpperCase(), w / 2, startY + i * 110));
+    
+    x.shadowColor = 'transparent'; // reset shadow
+
+    // 6. Decorative line
+    const lineY = startY + (lines.length * 110) + 40;
+    x.fillRect(w/2 - 80, lineY, 160, 4);
+
+    // 7. Author / Advocate Name at bottom
+    x.font = 'italic 40px "Times New Roman", serif';
+    x.fillStyle = 'rgba(255,255,255,0.8)';
+    if('letterSpacing' in x) x.letterSpacing = '4px';
+    x.fillText('Adv. Achche Lal Gautam', w / 2, h - 180);
+    
+    x.font = '30px "Times New Roman", serif';
+    x.fillStyle = 'rgba(255,255,255,0.5)';
+    if('letterSpacing' in x) x.letterSpacing = '8px';
+    x.fillText('DISTRICT COURT UNNAO', w / 2, h - 130);
+
+    console.log("Success");
+</script>
+</body>
+</html>
