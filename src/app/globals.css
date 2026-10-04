@@ -226,40 +226,36 @@ footer{background:#17130f;color:#fff7;text-align:center;padding:28px;font:13px A
   .office-gallery-head{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:600px){
-  .wrap{padding:0 17px}
+  body{margin:0}
+  html{scroll-padding-top:54px}
+  .wrap{padding:0 14px}
+  header{backdrop-filter:blur(12px)}
+  .nav{height:54px;gap:8px}
+  .logo{width:32px;height:32px;border-radius:8px;font-size:16px}
+  .brand b{font-size:13px}
   .brand small{display:none}
-  .brand b{font-size:15px}
-  .nav .btn{padding:11px 15px;font-size:12px}
-  h1{letter-spacing:-3px}
-  section{padding:75px 0}
-  .stats{gap:10px}
+  .nav>.btn{min-height:36px;padding:7px 12px;font-size:11px;border-radius:18px;max-width:130px;text-align:center}
+  .hero{min-height:auto;padding-top:64px;padding-bottom:36px;gap:24px}
+  h1{font-size:clamp(30px,7.5vw,50px);letter-spacing:-2px;margin:12px 0}
+  h2{font-size:clamp(24px,5.5vw,38px);letter-spacing:-1.5px;margin:8px 0 0}
+  .lead{font-size:15px;line-height:1.6}
+  section{padding:42px 0}
+  #services{height:75vh!important;min-height:480px!important}
+  #three-books-container{height:100%!important}
+  .stats{gap:8px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:24px;padding-top:16px}
   .stats span{font-size:11px}
   .cards,.two{grid-template-columns:1fr}
-  .contact-strip .wrap{flex-direction:column;align-items:flex-start}
-  .lang-switcher{right:12px;bottom:12px}
-}
-@media(max-width:760px){
-  body{margin:0}
-  html{scroll-padding-top:68px}
-  .nav{height:68px;gap:10px}
-  .nav>.btn{min-height:44px;padding:10px 12px;font-size:12px;white-space:normal;text-align:center}
-  .hero{min-height:100vh;padding-top:92px;gap:30px}
-  #services{height:100vh!important;min-height:640px!important}
-  #three-books-container{height:100%!important}
-  .contact-grid{gap:28px}
-  .contact-strip .wrap{flex-wrap:wrap;align-items:flex-start}
-  .sfb-wrap{flex-wrap:wrap}
-  form{padding:22px}
+  .contact-strip .wrap{flex-direction:column;align-items:flex-start;gap:16px}
+  .sfb-wrap{flex-wrap:wrap;gap:6px}
+  .sfb-card{width:36px;height:36px}
+  .sfb-front{font-size:14px}
+  .sfb-back{font-size:15px}
+  .lang-switcher{right:10px;bottom:10px;padding:7px 10px;font-size:12px}
+  form{padding:18px;border-radius:20px}
 }
 @supports(height:100svh){
-  @media(max-width:760px){
-    .hero{min-height:100svh}
-    #services{height:100svh!important;min-height:max(640px,100svh)!important}
+  @media(max-width:600px){
+    #services{height:75svh!important;min-height:480px!important}
   }
-}
-@media(max-width:600px){
-  .nav>.btn{max-width:142px;padding:9px 11px}
-  h2{letter-spacing:-1.5px}
-  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

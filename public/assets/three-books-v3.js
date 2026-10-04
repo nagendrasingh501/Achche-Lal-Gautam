@@ -14,15 +14,15 @@ class ThreeBooks {
         const root = this.container;
         root.innerHTML = `
             <div id="bs-root" style="position:relative; width:100%; height:100%; min-height:560px; overflow:hidden; font-family:sans-serif; background:var(--bg, #fbf9f4);">
-                <div id="bs-hero-word" style="pointer-events:none; position:absolute; left:50%; top:18%; transform:translateX(-50%) translateY(0); opacity:1; z-index:1; transition:all 0.5s ease-out; font-size:clamp(4.5rem,22.5vw,18rem); font-weight:800; line-height:0.85; letter-spacing:-0.015em; color:rgba(0,0,0,0.05); white-space:nowrap;">
+                <div id="bs-hero-word" style="pointer-events:none; position:absolute; left:50%; top:18%; transform:translateX(-50%) translateY(0); opacity:1; z-index:1; transition:all 0.5s ease-out; font-size:clamp(2.5rem,10vw,7rem); font-weight:800; line-height:0.85; letter-spacing:-0.015em; color:rgba(0,0,0,0.04); white-space:nowrap;">
                     Practice
                 </div>
                 
                 <canvas id="bs-canvas" style="position:absolute; inset:0; z-index:2; width:100%; height:100%; touch-action:pan-y pinch-zoom;"></canvas>
                 
                 <!-- Nav -->
-                <nav id="bs-nav" style="pointer-events:none; position:absolute; inset:0 0 auto 0; z-index:40; display:flex; justify-content:space-between; padding:clamp(20px,4vw,42px); transition:opacity 0.3s; opacity:1;">
-                    <div style="font-size:clamp(20px,2.2vw,29px); font-weight:800; letter-spacing:-0.01em; color:#141a32;">Legal Areas</div>
+                <nav id="bs-nav" style="pointer-events:none; position:absolute; inset:0 0 auto 0; z-index:40; display:flex; justify-content:space-between; padding:clamp(12px,3vw,24px); transition:opacity 0.3s; opacity:1;">
+                    <div style="font-size:clamp(14px,3.5vw,22px); font-weight:800; letter-spacing:-0.01em; color:#141a32;">Legal Areas</div>
                 </nav>
 
                 <!-- Carousel arrows -->
@@ -38,7 +38,7 @@ class ThreeBooks {
                 <!-- Detail Panel -->
                 <div id="bs-dp" style="position:absolute; right:7%; top:50%; transform:translateY(-50%); z-index:15; width:min(560px, 42%); pointer-events:none; visibility:hidden;">
                     <div id="bs-dp-subtitle" style="color:#96a2de; font-weight:bold; letter-spacing:2px; text-transform:uppercase; margin-bottom:15px; opacity:0; transform:translateY(28px); transition:all 0.6s cubic-bezier(0.22,1,0.36,1); font-size:13px;">PRACTICE AREA</div>
-                    <h1 id="bs-dp-title" style="margin:0; color:#f591ac; font-size:clamp(36px, 5.6vw, 92px); font-weight:800; line-height:0.98; letter-spacing:-0.015em; opacity:0; transform:translateY(28px); transition:all 0.6s cubic-bezier(0.22,1,0.36,1) 0.04s;">Title</h1>
+                    <h1 id="bs-dp-title" style="margin:0; color:#f591ac; font-size:clamp(24px, 5vw, 54px); font-weight:800; line-height:0.98; letter-spacing:-0.015em; opacity:0; transform:translateY(28px); transition:all 0.6s cubic-bezier(0.22,1,0.36,1) 0.04s;">Title</h1>
                     
                     <div id="bs-dp-meta" style="display:flex; align-items:center; gap:15px; margin-top:20px; opacity:0; transform:translateY(28px); transition:all 0.6s cubic-bezier(0.22,1,0.36,1) 0.08s; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:20px;">
                         <div style="color:#fff;">★ ★ ★ ★ ★</div>
@@ -48,7 +48,7 @@ class ThreeBooks {
                         <div style="color:#c9d0ee; font-style:italic;">Unnao District Court</div>
                     </div>
 
-                    <p id="bs-dp-desc" style="margin-top:26px; max-width:54ch; color:#c9d0ee; font-size:clamp(15px, 1.25vw, 19px); line-height:1.65; opacity:0; transform:translateY(28px); transition:all 0.6s cubic-bezier(0.22,1,0.36,1) 0.12s;">Description</p>
+                    <p id="bs-dp-desc" style="margin-top:26px; max-width:54ch; color:#c9d0ee; font-size:clamp(13px, 3.5vw, 17px); line-height:1.65; opacity:0; transform:translateY(28px); transition:all 0.6s cubic-bezier(0.22,1,0.36,1) 0.12s;">Description</p>
                     
                     </div>
             </div>
@@ -252,7 +252,7 @@ class ThreeBooks {
             x.shadowOffsetY = 5;
             
             x.fillStyle = goldGrad; 
-            x.font = '800 85px "Times New Roman", serif';
+            x.font = '800 68px "Times New Roman", serif';
             // Disable letterSpacing for main title if unsupported, or simulate
             if(x.letterSpacing !== undefined) x.letterSpacing = '2px';
             
