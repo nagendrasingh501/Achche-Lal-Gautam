@@ -344,6 +344,12 @@ header{
 .snav-ambience{background:radial-gradient(70px circle at var(--ambience-x,50%) 0%,rgba(212,180,106,.9) 0%,transparent 100%)}
 .nav>.btn{background:#c6a45e;color:#101a2c;border-color:rgba(244,226,179,.65);box-shadow:0 6px 20px rgba(6,12,24,.35)}
 .nav>.btn:hover{background:#d5b875;color:#101a2c;border-color:#ead59f;box-shadow:0 0 20px rgba(212,180,106,.28),0 10px 24px rgba(4,10,20,.35)}
+#home.hero{
+  background-image:linear-gradient(90deg,rgba(245,240,230,.72) 0%,rgba(245,240,230,.56) 52%,rgba(245,240,230,.38) 100%),url('/assets/justice-bg.jpg');
+  background-size:cover;
+  background-position:center;
+}
+@media(max-width:760px){#home.hero{background-position:center top}}
 
 /* ---- Touch Active States (Mobile Interactivity) ---- */
 @media(hover:none){
