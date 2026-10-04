@@ -72,7 +72,7 @@ export default function PracticeAreasSection() {
   }, []);
 
   return (
-    <section id="services" style={{ padding: 0, margin: 0, background: '#fbf9f4', height: '100vh', minHeight: 800 }}>
+    <section id="services" style={{ padding: 0, margin: 0, background: '#fbf9f4', height: '100vh', minHeight: 640 }}>
       <div id="three-books-container" style={{ width: '100%', height: '100%' }} />
     </section>
   );

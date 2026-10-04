@@ -138,7 +138,37 @@
 .snav-spotlight.snav-visible{opacity:1}
 .snav-ambience{pointer-events:none;position:absolute;bottom:0;left:0;width:100%;height:2px;z-index:2;background:radial-gradient(70px circle at var(--ambience-x,50%) 0%,rgba(0,0,0,0.75) 0%,transparent 100%)}
 @media(max-width:900px){.snav-pill{display:none}}
-</style><style>@media(max-width:760px){#bs-dp-title{font-size:clamp(36px,9.5vw,54px)!important}#bs-dp{right:auto!important;left:50%!important;bottom:3.5%!important;top:auto!important;transform:translateX(-50%)!important;width:min(560px,92vw)!important}#bs-dp-actions{flex-wrap:wrap;border-radius:28px!important}}</style></head><body>
+</style><style>@media(max-width:760px){#bs-dp-title{font-size:clamp(36px,9.5vw,54px)!important}#bs-dp{right:auto!important;left:50%!important;bottom:3.5%!important;top:auto!important;transform:translateX(-50%)!important;width:min(560px,92vw)!important}#bs-dp-actions{flex-wrap:wrap;border-radius:28px!important}}</style><style>
+@media(max-width:760px){
+  body{margin:0}
+  html{scroll-padding-top:68px}
+  .nav{height:68px;gap:10px}
+  .nav>.btn{min-height:44px;padding:10px 12px;font-size:12px;white-space:normal;text-align:center}
+  .hero{min-height:100vh;padding-top:92px;gap:30px}
+  #services{height:100vh!important;min-height:640px!important}
+  #services #three-books-container{height:100%!important}
+  #bs-canvas{touch-action:pan-y pinch-zoom!important}
+  #bs-dp{max-height:44%!important;overflow-y:auto!important;pointer-events:auto!important;-webkit-overflow-scrolling:touch}
+  #bs-dp-meta{flex-wrap:wrap;gap:8px!important}
+  .contact-grid{gap:28px}
+  .contact-strip .wrap{flex-wrap:wrap;align-items:flex-start}
+  .sfb-wrap{flex-wrap:wrap}
+  form{padding:22px}
+}
+@supports(height:100svh){
+  @media(max-width:760px){
+    .hero{min-height:100svh}
+    #services{height:100svh!important;min-height:max(640px,100svh)!important}
+  }
+}
+@media(max-width:600px){
+  .nav>.btn{max-width:142px;padding:9px 11px}
+  h2{letter-spacing:-1.5px}
+  .cards,.two{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
 <header><div class="wrap nav"><a class="brand" href="#home"><span class="logo">⚖</span><span><b>Achche Lal Gautam</b><small>District Court Lawyer</small></span></a><div class="snav-pill" id="spotlightNav" role="navigation" aria-label="Main navigation"><ul class="snav-list"><li><a href="#about" class="snav-link" data-section="about" data-idx="0">About</a></li><li><a href="#services" class="snav-link" data-section="services" data-idx="1">Practice Areas</a></li><li><a href="#process" class="snav-link" data-section="process" data-idx="2">Process</a></li><li><a href="#contact" class="snav-link" data-section="contact" data-idx="3">Contact</a></li></ul><div class="snav-spotlight" id="snavSpotlight"></div><div class="snav-ambience" id="snavAmbience"></div></div><a class="btn" href="#consult">Book Consultation</a></div></header>
 <section id="home" class="hero"><div><div class="pill">⌖ District Unnao, Uttar Pradesh</div><h1><span class="ktl-wrap" aria-label="Justice"><span class="ktl-dot"></span><span class="ktl-j">J</span>ust<span class="ktl-i">ı</span>ce</span> with <em>clarity.</em></h1><p class="lead">I am <strong>Achche Lal Gautam</strong>, a Former Zila Panchayat Member and District Court Lawyer in Unnao. I assist clients across criminal, land & property, matrimonial, civil and related legal matters.</p><div class="actions"><a class="creepy-btn" href="#consult" id="heroCreepyBtn"><span class="creepy-eyes" id="heroEyes"><span class="creepy-eye"><span class="creepy-pupil" id="heroPupilL"></span></span><span class="creepy-eye"><span class="creepy-pupil" id="heroPupilR"></span></span></span><span class="creepy-cover">Request Consultation →</span><span class="creepy-ghost">Request Consultation →</span></a><a class="btn outline" href="#services">Explore Practice Areas</a></div><div class="stats"><div><span>Direct consultation</span></div><div><span>Court representation</span></div><div><span>Case-focused strategy</span></div></div></div><div class="portrait-card"><img class="portrait" src="assets/advocate-profile-achche-lal.png" alt="Achche Lal Gautam, District Court Lawyer"><div class="caption"><strong>Achche Lal Gautam</strong><br><span style="color:#fff9;font-size:13px">Former Zila Panchayat Member<br>District Court • Unnao</span></div></div></section>
 <section id="services" style="padding:0; margin:0; background:#fbf9f4; height:100vh; min-height:800px;">

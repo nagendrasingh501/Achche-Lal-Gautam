@@ -18,7 +18,7 @@ class ThreeBooks {
                     Practice
                 </div>
                 
-                <canvas id="bs-canvas" style="position:absolute; inset:0; z-index:2; width:100%; height:100%; touch-action:none;"></canvas>
+                <canvas id="bs-canvas" style="position:absolute; inset:0; z-index:2; width:100%; height:100%; touch-action:pan-y pinch-zoom;"></canvas>
                 
                 <!-- Nav -->
                 <nav id="bs-nav" style="pointer-events:none; position:absolute; inset:0 0 auto 0; z-index:40; display:flex; justify-content:space-between; padding:clamp(20px,4vw,42px); transition:opacity 0.3s; opacity:1;">

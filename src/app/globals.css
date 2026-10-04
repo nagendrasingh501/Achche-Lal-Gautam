@@ -207,7 +207,7 @@ footer{background:#17130f;color:#fff7;text-align:center;padding:28px;font:13px A
 
 /* ---- BooksShowcase container support ---- */
 .bs-root { cursor: default; }
-.bs-root canvas { display: block; }
+.bs-root canvas { display: block; touch-action: pan-y pinch-zoom; }
 
 /* ---- Responsive ---- */
 @media(max-width:900px){
@@ -238,3 +238,28 @@ footer{background:#17130f;color:#fff7;text-align:center;padding:28px;font:13px A
   .contact-strip .wrap{flex-direction:column;align-items:flex-start}
   .lang-switcher{right:12px;bottom:12px}
 }
+@media(max-width:760px){
+  body{margin:0}
+  html{scroll-padding-top:68px}
+  .nav{height:68px;gap:10px}
+  .nav>.btn{min-height:44px;padding:10px 12px;font-size:12px;white-space:normal;text-align:center}
+  .hero{min-height:100vh;padding-top:92px;gap:30px}
+  #services{height:100vh!important;min-height:640px!important}
+  #three-books-container{height:100%!important}
+  .contact-grid{gap:28px}
+  .contact-strip .wrap{flex-wrap:wrap;align-items:flex-start}
+  .sfb-wrap{flex-wrap:wrap}
+  form{padding:22px}
+}
+@supports(height:100svh){
+  @media(max-width:760px){
+    .hero{min-height:100svh}
+    #services{height:100svh!important;min-height:max(640px,100svh)!important}
+  }
+}
+@media(max-width:600px){
+  .nav>.btn{max-width:142px;padding:9px 11px}
+  h2{letter-spacing:-1.5px}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
