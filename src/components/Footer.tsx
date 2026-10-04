@@ -76,6 +76,8 @@ export default function Footer() {
               id="sfbContainer"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              onTouchStart={() => setIsHovered((prev) => !prev)}
+              onClick={() => setIsHovered((prev) => !prev)}
             >
               <div className="sfb-line sfb-line-top" />
               <div className="sfb-line sfb-line-bot" />

@@ -535,7 +535,7 @@ class ThreeBooks {
         function computeSlots() {
             const a = dims.w / Math.max(1, dims.h), portrait = a < 0.85;
             const fit = portrait ? clamp(a / 1.08, 0.38, 0.74) : clamp(a / 1.62, 0.52, 1);
-            bookRoot.scale.setScalar(fit); bookRoot.position.y = -(1 - fit) * 0.28;
+            bookRoot.scale.setScalar(fit); bookRoot.position.y = portrait ? 0.3 : -(1 - fit) * 0.28;
             SLOTS.portrait = portrait;
             SLOTS.hero = portrait ? [
                 { p: [-1.36, -0.58, -0.12], r: [-0.045, 0.4, 0.185], s: 1.25 },
@@ -547,7 +547,7 @@ class ThreeBooks {
                 { p: [2.35, -0.64, -0.34], r: [-0.045, -0.42, -0.17], s: 1.22 },
             ];
             if (portrait) {
-                SLOTS.detail = { p: [0, -0.1, 0.8], r: [-0.02, -0.4, 0.06], s: 0.8 };
+                SLOTS.detail = { p: [0, 0.62, 0.8], r: [-0.02, -0.4, 0.06], s: 0.75 };
             } else {
                 SLOTS.detail = { p: [-1.68, 0.0, 0.85], r: [0.02, -0.44, 0.08], s: 1.06 };
             }
@@ -756,10 +756,13 @@ class ThreeBooks {
         });
         window.addEventListener('pointerup', e => {
             if (ptr.id !== null && e.pointerId !== ptr.id) return; ptr.id = null; orbit.drag = false;
-            if (dragBook) {
-                const slop = (ptr.type === 'touch') ? 26 : 14, limit = (ptr.type === 'touch') ? 650 : 450;
-                const wasDrag = ptr.moved > slop; dragBook.springs.drag.t = 0;
-                if (!wasDrag && uiMode === 'hero' && performance.now() - ptr.t0 < limit) open(dragBook);
+            const r = rootEl.getBoundingClientRect(), cx = e.clientX - r.left, cy = e.clientY - r.top;
+            ptr.ndcX = (cx / dims.w) * 2 - 1; ptr.ndcY = -(cy / dims.h) * 2 + 1;
+            const targetBook = dragBook || (castRay(), rayBook);
+            if (targetBook) {
+                const slop = (ptr.type === 'touch') ? 36 : 14, limit = (ptr.type === 'touch') ? 850 : 450;
+                const wasDrag = ptr.moved > slop; targetBook.springs.drag.t = 0;
+                if (!wasDrag && uiMode === 'hero' && performance.now() - ptr.t0 < limit) open(targetBook);
                 dragBook = null;
             }
             ptr.down = false; if (ptr.type === 'touch') rayBook = null;
