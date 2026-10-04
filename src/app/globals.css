@@ -328,6 +328,23 @@ footer{background:rgba(10,12,26,0.92);color:#fff7;text-align:center;padding:28px
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+/* ---- Deep navy and muted gold header theme ---- */
+header{
+  background:rgba(15,25,45,.96);
+  border-bottom:1px solid rgba(198,163,95,.3);
+  box-shadow:0 8px 28px rgba(5,10,20,.22);
+}
+.brand b{color:#f4efe4}
+.brand small{color:#c6b991}
+.logo{background:#0b1425;color:#d4b46a;border:1px solid rgba(212,180,106,.38)}
+.snav-pill{background:rgba(25,39,64,.94);border-color:rgba(212,180,106,.26);box-shadow:0 5px 20px rgba(4,10,20,.28)}
+.snav-link{color:#c4cad4}
+.snav-link.snav-active,.snav-link:hover,.snav-link:focus-visible{color:#e2c27a;background:rgba(212,180,106,.12)}
+.snav-spotlight{background:radial-gradient(120px circle at var(--spotlight-x,50%) 100%,rgba(212,180,106,.2) 0%,transparent 55%)}
+.snav-ambience{background:radial-gradient(70px circle at var(--ambience-x,50%) 0%,rgba(212,180,106,.9) 0%,transparent 100%)}
+.nav>.btn{background:#c6a45e;color:#101a2c;border-color:rgba(244,226,179,.65);box-shadow:0 6px 20px rgba(6,12,24,.35)}
+.nav>.btn:hover{background:#d5b875;color:#101a2c;border-color:#ead59f;box-shadow:0 0 20px rgba(212,180,106,.28),0 10px 24px rgba(4,10,20,.35)}
+
 /* ---- Touch Active States (Mobile Interactivity) ---- */
 @media(hover:none){
   /* Creepy button: show cover rotated on touch-active */
@@ -369,4 +386,3 @@ footer{background:rgba(10,12,26,0.92);color:#fff7;text-align:center;padding:28px
   .two{gap:10px}
   .actions{gap:10px}
 }
-
