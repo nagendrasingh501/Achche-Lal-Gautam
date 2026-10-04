@@ -1,321 +1,202 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { useState } from 'react';
-import type { BookCfg } from './BooksShowcase';
+import { useEffect, useState } from 'react';
 
-const BooksShowcase = dynamic(() => import('./BooksShowcase').then((m) => m.BooksShowcase), {
-  ssr: false,
-  loading: () => (
-    <div
-      style={{
-        height: 580,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'rgba(255,255,255,0.4)',
-        fontFamily: 'Arial',
-        fontSize: 14,
-        background: 'radial-gradient(circle at 50% 45%,#39291c,#17130f 58%)',
-        borderRadius: 24,
-        border: '1px solid rgba(255,255,255,0.07)',
-      }}
-    >
-      Loading 3D viewer…
-    </div>
-  ),
-});
-
-// Procedural cover painters for each legal practice area
-function paintCriminal(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  // Deep crimson gradient background
-  const bg = ctx.createLinearGradient(0, 0, 0, h);
-  bg.addColorStop(0, '#6b1a1a');
-  bg.addColorStop(1, '#2d0808');
-  ctx.fillStyle = bg;
-  ctx.fillRect(0, 0, w, h);
-
-  // Subtle grid pattern
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < w; i += 60) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
-  for (let j = 0; j < h; j += 60) { ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(w, j); ctx.stroke(); }
-
-  // Gold border
-  ctx.strokeStyle = 'rgba(217,130,43,0.7)';
-  ctx.lineWidth = 4;
-  ctx.strokeRect(48, 48, w - 96, h - 96);
-
-  // Balance scale icon (simple)
-  ctx.fillStyle = 'rgba(217,130,43,0.9)';
-  ctx.font = '120px serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('⚖', w / 2, h * 0.32);
-
-  // Title
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '700 88px Georgia';
-  ctx.fillText('CRIMINAL', w / 2, h * 0.52);
-  ctx.font = '700 80px Georgia';
-  ctx.fillText('LAW', w / 2, h * 0.62);
-
-  // Subtitle
-  ctx.globalAlpha = 0.75;
-  ctx.font = 'italic 40px Georgia';
-  ctx.fillText('District Court • Unnao', w / 2, h * 0.73);
-  ctx.globalAlpha = 1;
-
-  // Thin gold line
-  ctx.fillStyle = 'rgba(217,130,43,0.6)';
-  ctx.fillRect(w / 2 - 120, h * 0.79, 240, 3);
-
-  // Footer
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.font = '700 28px Arial';
-  ctx.letterSpacing = '4px';
-  ctx.fillText('LEGAL PRACTICE', w / 2, h * 0.87);
+declare global {
+  interface Window {
+    ThreeBooks: any;
+    THREE: any;
+    __threeBooksRetranslate?: () => void;
+  }
 }
 
-function paintProperty(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const bg = ctx.createLinearGradient(0, 0, 0, h);
-  bg.addColorStop(0, '#0f3828');
-  bg.addColorStop(1, '#071e14');
-  ctx.fillStyle = bg;
-  ctx.fillRect(0, 0, w, h);
-
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < w; i += 60) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
-  for (let j = 0; j < h; j += 60) { ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(w, j); ctx.stroke(); }
-
-  ctx.strokeStyle = 'rgba(217,130,43,0.7)';
-  ctx.lineWidth = 4;
-  ctx.strokeRect(48, 48, w - 96, h - 96);
-
-  ctx.fillStyle = 'rgba(217,130,43,0.9)';
-  ctx.font = '120px serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('🏛', w / 2, h * 0.32);
-
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '700 80px Georgia';
-  ctx.fillText('LAND &', w / 2, h * 0.52);
-  ctx.fillText('PROPERTY', w / 2, h * 0.62);
-
-  ctx.globalAlpha = 0.75;
-  ctx.font = 'italic 40px Georgia';
-  ctx.fillText('Civil Matters • Unnao', w / 2, h * 0.73);
-  ctx.globalAlpha = 1;
-
-  ctx.fillStyle = 'rgba(217,130,43,0.6)';
-  ctx.fillRect(w / 2 - 120, h * 0.79, 240, 3);
-
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.font = '700 28px Arial';
-  ctx.fillText('LEGAL PRACTICE', w / 2, h * 0.87);
-}
-
-function paintFamily(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const bg = ctx.createLinearGradient(0, 0, 0, h);
-  bg.addColorStop(0, '#3d1640');
-  bg.addColorStop(1, '#1a0820');
-  ctx.fillStyle = bg;
-  ctx.fillRect(0, 0, w, h);
-
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < w; i += 60) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
-  for (let j = 0; j < h; j += 60) { ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(w, j); ctx.stroke(); }
-
-  ctx.strokeStyle = 'rgba(217,130,43,0.7)';
-  ctx.lineWidth = 4;
-  ctx.strokeRect(48, 48, w - 96, h - 96);
-
-  ctx.fillStyle = 'rgba(217,130,43,0.9)';
-  ctx.font = '120px serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('👨‍👩‍👧', w / 2, h * 0.32);
-
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '700 80px Georgia';
-  ctx.fillText('MARRIAGE', w / 2, h * 0.52);
-  ctx.fillText('& FAMILY', w / 2, h * 0.62);
-
-  ctx.globalAlpha = 0.75;
-  ctx.font = 'italic 40px Georgia';
-  ctx.fillText('Confidential Legal Support', w / 2, h * 0.73);
-  ctx.globalAlpha = 1;
-
-  ctx.fillStyle = 'rgba(217,130,43,0.6)';
-  ctx.fillRect(w / 2 - 120, h * 0.79, 240, 3);
-
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.font = '700 28px Arial';
-  ctx.fillText('LEGAL PRACTICE', w / 2, h * 0.87);
-}
-
-function paintCivil(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const bg = ctx.createLinearGradient(0, 0, 0, h);
-  bg.addColorStop(0, '#122040');
-  bg.addColorStop(1, '#060e20');
-  ctx.fillStyle = bg;
-  ctx.fillRect(0, 0, w, h);
-
-  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < w; i += 60) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
-  for (let j = 0; j < h; j += 60) { ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(w, j); ctx.stroke(); }
-
-  ctx.strokeStyle = 'rgba(217,130,43,0.7)';
-  ctx.lineWidth = 4;
-  ctx.strokeRect(48, 48, w - 96, h - 96);
-
-  ctx.fillStyle = 'rgba(217,130,43,0.9)';
-  ctx.font = '120px serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('📜', w / 2, h * 0.32);
-
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '700 88px Georgia';
-  ctx.fillText('CIVIL', w / 2, h * 0.52);
-  ctx.font = '700 80px Georgia';
-  ctx.fillText('DISPUTES', w / 2, h * 0.62);
-
-  ctx.globalAlpha = 0.75;
-  ctx.font = 'italic 40px Georgia';
-  ctx.fillText('Representation • Unnao', w / 2, h * 0.73);
-  ctx.globalAlpha = 1;
-
-  ctx.fillStyle = 'rgba(217,130,43,0.6)';
-  ctx.fillRect(w / 2 - 120, h * 0.79, 240, 3);
-
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.font = '700 28px Arial';
-  ctx.fillText('LEGAL PRACTICE', w / 2, h * 0.87);
-}
-
-const PRACTICE_BOOKS: BookCfg[] = [
+const PRACTICE_BOOKS = [
   {
-    id: 'criminal',
-    title: 'Criminal Law',
-    author: 'Achche Lal Gautam',
-    year: 'District Court · Unnao',
-    stars: 5,
-    desc: 'Representation and legal assistance in criminal matters, including case preparation, court appearances and procedural guidance.',
-    front: paintCriminal,
-    spineBg: '#57140f',
-    backBg: '#57140f',
-    spineInk: '#e4a15b',
-    chapters: ['Overview', 'Case Preparation', 'Bail Applications', 'Trial Representation', 'Appeals', 'Final Arguments'],
+    title: 'CRIMINAL LAW',
+    color: '#1a1a1a',
+    desc: 'Comprehensive defense and representation in all criminal proceedings. From police station advisement and bail applications to trial litigation and appeals. We ensure your rights are protected at every step of the criminal justice system with rigorous evidence analysis and strategic courtroom advocacy.',
+    chapters: ['Bail Applications', 'Trial Proceedings', 'Cross-Examination', 'Appeals & Revisions', 'FIR Quashing', 'White Collar Crimes'],
   },
   {
-    id: 'property',
-    title: 'Land & Property',
-    author: 'Achche Lal Gautam',
-    year: 'Civil Matters · Unnao',
-    stars: 5,
-    desc: 'Legal support for land, property, possession, documentation and related civil disputes including chakbandi matters.',
-    front: paintProperty,
-    spineBg: '#17362e',
-    backBg: '#17362e',
-    spineInk: '#e4a15b',
-    chapters: ['Overview', 'Title Disputes', 'Possession Matters', 'Chakbandi Appeals', 'Revenue Court', 'Documentation'],
+    title: 'LAND & PROPERTY',
+    color: '#1a2a3a',
+    desc: 'Expert legal counsel for complex property disputes, real estate transactions, and land rights. We handle title verification, boundary disputes, partition suits, and illegal possession cases. Secure your assets with thorough documentation and aggressive civil representation.',
+    chapters: ['Title Disputes', 'Partition Suits', 'Illegal Possession', 'Lease & Tenancy', 'Registration & Deeds', 'Succession & Mutation'],
   },
   {
-    id: 'family',
-    title: 'Marriage & Family',
-    author: 'Achche Lal Gautam',
-    year: 'Confidential Legal Support',
-    stars: 5,
-    desc: 'Assistance in matrimonial and family-law matters, with confidential consultation and representation in District Court.',
-    front: paintFamily,
-    spineBg: '#422637',
-    backBg: '#422637',
-    spineInk: '#e4a15b',
-    chapters: ['Overview', 'Matrimonial Disputes', 'Divorce Proceedings', 'Maintenance', 'Child Custody', 'Settlement'],
+    title: 'MARRIAGE & FAMILY',
+    color: '#3d1622',
+    desc: 'Sensitive and confidential legal support for matrimonial disputes and family matters. We provide mediation and litigation services for contested divorces, mutual separation, child custody, alimony claims, and domestic violence protections, prioritizing your peace of mind.',
+    chapters: ['Contested Divorce', 'Mutual Consent', 'Child Custody', 'Alimony & Maintenance', 'Domestic Violence', 'Restitution of Rights'],
   },
   {
-    id: 'civil',
-    title: 'Civil Disputes',
-    author: 'Achche Lal Gautam',
-    year: 'Representation · Unnao',
-    stars: 5,
-    desc: 'Consultation and representation for civil disputes, notices, pleadings and court proceedings at District Court level.',
-    front: paintCivil,
-    spineBg: '#1e2b48',
-    backBg: '#1e2b48',
-    spineInk: '#e4a15b',
-    chapters: ['Overview', 'Civil Suits', 'Injunctions', 'Notices & Plaints', 'Court Proceedings', 'Appeals'],
+    title: 'CIVIL DISPUTES',
+    color: '#163521',
+    desc: 'Strategic consultation and representation for a wide array of civil litigation. We draft robust legal notices, handle breach of contract claims, injunctions, and consumer protection cases. Dedicated to resolving disputes efficiently through negotiation or district court proceedings.',
+    chapters: ['Breach of Contract', 'Injunctions', 'Consumer Cases', 'Legal Notices', 'Recovery Suits', 'Arbitration'],
   },
 ];
 
+const READER_DATA: Record<string, { intro: string; services: string[]; details: string }> = {
+  'CRIMINAL LAW': {
+    intro: 'Legal assistance for criminal matters, including preparation, procedural guidance and representation in District Court proceedings.',
+    services: ['Case preparation and document review', 'Court representation and procedural guidance', 'Bail and related criminal applications', 'Understanding notices, complaints and next legal steps'],
+    details: 'Criminal matters can involve urgent deadlines and important procedural decisions. A consultation can help organize the facts, documents and immediate legal issues before action is taken.',
+  },
+  'LAND & PROPERTY': {
+    intro: 'Legal support for land and property matters, possession issues, documentation and related civil disputes.',
+    services: ['Land and property document review', 'Possession and boundary-related disputes', 'Property notices and civil proceedings', 'Guidance on available legal remedies and documentation'],
+    details: 'Property disputes often depend on documents, possession history and the nature of the claim. The consultation focuses on understanding the available records and the dispute before deciding the appropriate legal route.',
+  },
+  'MARRIAGE & FAMILY': {
+    intro: 'Confidential legal assistance for matrimonial and family-law matters, with practical guidance based on the facts of the matter.',
+    services: ['Matrimonial and family-law consultations', 'Divorce and related proceedings guidance', 'Maintenance and family disputes', 'Representation and procedural guidance'],
+    details: 'Family matters can involve sensitive personal circumstances. The consultation provides a structured way to explain the situation, identify relevant documents and discuss the legal process that may apply.',
+  },
+  'CIVIL DISPUTES': {
+    intro: 'Consultation and representation for civil disputes, notices, pleadings and court proceedings.',
+    services: ['Civil case consultation and preparation', 'Legal notice and reply guidance', 'Pleadings and document review', 'Court proceedings and procedural assistance'],
+    details: 'Civil disputes may require careful review of agreements, notices, records and the chronology of events. The first consultation helps establish the facts and identify the documents relevant to the matter.',
+  },
+};
+
 export default function PracticeAreasSection() {
-  const [selected, setSelected] = useState<BookCfg | null>(null);
+  const [readerOpen, setReaderOpen] = useState(false);
+  const [activeBookTitle, setActiveBookTitle] = useState<string>('CRIMINAL LAW');
+  const [readerStep, setReaderStep] = useState<number>(0);
+  const [coverOpened, setCoverOpened] = useState<boolean>(false);
+
+  useEffect(() => {
+    let instance: any = null;
+
+    const loadScript = (src: string) => {
+      return new Promise<void>((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+          resolve();
+          return;
+        }
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error(`Failed to load ${src}`));
+        document.body.appendChild(s);
+      });
+    };
+
+    Promise.all([
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'),
+      loadScript('/assets/three-books-v3.js'),
+    ])
+      .then(() => {
+        if (window.ThreeBooks && document.getElementById('three-books-container')) {
+          instance = new window.ThreeBooks('three-books-container', PRACTICE_BOOKS);
+        }
+      })
+      .catch((err) => console.warn('ThreeBooks script load warning:', err));
+
+    return () => {
+      // cleanup if needed
+    };
+  }, []);
+
+  const openReader = (bookTitle: string) => {
+    setActiveBookTitle(bookTitle);
+    setReaderStep(0);
+    setCoverOpened(false);
+    setReaderOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeReader = () => {
+    setReaderOpen(false);
+    setCoverOpened(false);
+    document.body.style.overflow = '';
+  };
+
+  const goNext = () => {
+    if (readerStep < 2) {
+      setReaderStep((prev) => prev + 1);
+      setCoverOpened(true);
+    }
+  };
+
+  const goPrev = () => {
+    if (readerStep > 0) {
+      const nextStep = readerStep - 1;
+      setReaderStep(nextStep);
+      if (nextStep === 0) setCoverOpened(false);
+    }
+  };
+
+  const currentData = READER_DATA[activeBookTitle] || READER_DATA['CIVIL DISPUTES'];
 
   return (
-    <section id="services" className="dark">
-      <div className="wrap">
-        <div className="section-head">
-          <div>
-            <div className="eyebrow">Practice Areas</div>
-            <h2>
-              Legal matters,
-              <br />
-              presented clearly.
-            </h2>
+    <>
+      <section id="services" style={{ padding: 0, margin: 0, background: '#fbf9f4', height: '100vh', minHeight: 800 }}>
+        <div id="three-books-container" style={{ width: '100%', height: '100%' }} />
+      </section>
+
+      {/* Reader Modal */}
+      <div className={`practice-reader${readerOpen ? ' open' : ''}`} id="practiceReader" aria-hidden={!readerOpen}>
+        <div className="reader-shell">
+          <button className="reader-close" id="readerClose" aria-label="Close" onClick={closeReader}>
+            ×
+          </button>
+          <div className="reader-book" id="readerBook">
+            <div className={`reader-cover${coverOpened ? ' opened' : ''}`} id="readerCover" onClick={goNext}>
+              <div className="reader-cover-inner">
+                <div className="cover-mark">⚖</div>
+                <div className="reader-kicker">District Court • Unnao</div>
+                <h2 id="readerCoverTitle">{activeBookTitle}</h2>
+                <p>Interactive Practice Guide</p>
+                <p style={{ marginTop: 24, fontSize: 10, color: 'rgba(255,255,255,0.5)' }}>Click the cover to open</p>
+              </div>
+            </div>
+            <article className="reader-page">
+              <div className="page-label">Practice Area</div>
+              <h3 id="readerTitle">{activeBookTitle}</h3>
+              <p id="readerIntro">{currentData.intro}</p>
+              <h4>Services &amp; Assistance</h4>
+              <ul id="readerServices">
+                {currentData.services.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
+              </ul>
+              <div className="page-number">01</div>
+            </article>
+            <article className="reader-page">
+              <div className="page-label">Legal Support</div>
+              <h3 id="readerTitle2">What this covers</h3>
+              <p id="readerDetails">{currentData.details}</p>
+              <h4>How the consultation begins</h4>
+              <p>Share the basic facts and available documents. The matter can then be reviewed so that the next practical legal steps can be discussed.</p>
+              <h4>Confidential consultation</h4>
+              <p>Case information is handled as consultation material and should be shared through the appropriate contact channel.</p>
+              <div className="page-number">02</div>
+            </article>
           </div>
-          <p className="muted">
-            Click any practice area book to explore it in 3D. Drag to rotate, click to open.
-          </p>
-        </div>
-
-        <div
-          style={{
-            height: 580,
-            borderRadius: 24,
-            overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.07)',
-            background: 'radial-gradient(circle at 50% 45%,#39291c,#17130f 58%)',
-          }}
-        >
-          <BooksShowcase
-            books={PRACTICE_BOOKS}
-            heroTitle="Practice Areas"
-            showNav={false}
-            showDetailPanel={true}
-            showCarousel={false}
-            onBookSelect={setSelected}
-            className="w-full h-full"
-            themeColors={{
-              navy: '#17130f',
-              cream: '#f5f0e6',
-              lav: '#e4a15b',
-              peri: '#d9822b',
-              bgDark: '#17130f',
-            }}
-          />
-        </div>
-
-        <div
-          className="book-detail"
-          style={{
-            minHeight: 20,
-            marginTop: 17,
-            textAlign: 'center',
-            font: '14px Arial',
-            color: 'rgba(255,255,255,0.5)',
-            transition: 'all 0.4s ease',
-          }}
-        >
-          {selected ? (
-            <>
-              <strong style={{ color: '#e4a15b' }}>{selected.title}</strong> — {selected.desc}
-            </>
-          ) : (
-            'Click a practice area book to view details.'
-          )}
+          <div className="reader-actions">
+            <button id="readerPrev" onClick={goPrev}>
+              ← Previous
+            </button>
+            <span className="reader-counter" id="readerCounter">
+              {readerStep === 0 ? 'Cover' : `Page ${readerStep} of 2`}
+            </span>
+            <button id="readerNext" onClick={goNext}>
+              Next →
+            </button>
+            <button
+              id="readerConsult"
+              onClick={() => {
+                closeReader();
+                document.getElementById('consult')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Request Consultation
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }
