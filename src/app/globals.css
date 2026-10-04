@@ -9,13 +9,13 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:2vh;background:#f5f0e6;color:#17130f;font-family:Georgia,serif}
+body{margin:2vh;background-color:#f5f0e6;background-image:url('/assets/law-bg-light.png');background-size:420px 420px;background-repeat:repeat;color:#17130f;font-family:Georgia,serif}
 a{text-decoration:none;color:inherit}
 button,input,select,textarea{font:inherit}
 .wrap{max-width:1200px;margin:auto;padding:0 24px}
 
 /* ---- Header ---- */
-header{position:fixed;z-index:10;top:0;left:0;right:0;background:#f5f0e6ee;backdrop-filter:blur(15px);border-bottom:1px solid #0002}
+header{position:fixed;z-index:10;top:0;left:0;right:0;background-color:#f5f0e6ee;background-image:url('/assets/law-bg-light.png');background-size:420px 420px;background-repeat:repeat;backdrop-filter:blur(15px);border-bottom:1px solid #0002;box-shadow:0 2px 20px rgba(0,0,0,0.08)}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px}
 .logo{width:44px;height:44px;border-radius:12px;background:#17130f;color:#e4a15b;display:grid;place-items:center;font-size:22px}
@@ -36,7 +36,7 @@ nav{display:flex;gap:27px;font:700 14px Arial}
 .outline:hover{color:#fff}
 
 /* ---- Hero ---- */
-.hero{min-height:100vh;padding-top:115px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px;background-image:linear-gradient(#f5f0e6ee,#f5f0e6ee),linear-gradient(90deg,#00000008 1px,transparent 1px),linear-gradient(#00000008 1px,transparent 1px);background-size:auto,32px 32px,32px 32px}
+.hero{min-height:100vh;padding-top:115px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px;background-color:#f5f0e6;background-image:url('/assets/law-bg-light.png');background-size:420px 420px;background-repeat:repeat}
 .pill{display:inline-flex;gap:8px;border:1px solid #d9822b55;background:#fff9;padding:9px 15px;border-radius:999px;font:700 12px Arial;letter-spacing:1.5px;text-transform:uppercase;color:#8a4d16}
 h1{font-size:clamp(55px,8vw,108px);line-height:.9;letter-spacing:-5px;margin:23px 0}
 h1 em{color:#c56e1e}
@@ -55,7 +55,7 @@ h1 em{color:#c56e1e}
 
 /* ---- Sections ---- */
 section{padding:100px 0}
-.dark{background:#17130f;color:#fff}
+.dark{background-color:#0d1126;background-image:url('/assets/law-bg-dark.png');background-size:500px 500px;background-repeat:repeat;color:#fff}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}
 .eyebrow{font:700 11px Arial;letter-spacing:3px;text-transform:uppercase;color:#e4a15b}
 h2{font-size:clamp(40px,6vw,70px);line-height:.95;letter-spacing:-3px;margin:12px 0 0}
@@ -69,7 +69,7 @@ h2{font-size:clamp(40px,6vw,70px);line-height:.95;letter-spacing:-3px;margin:12p
 .icon{font-size:24px;color:#c56e1e}
 
 /* ---- Process ---- */
-.process{background:#fff7;border-top:1px solid #0001;border-bottom:1px solid #0001}
+.process{background-color:#f5f0e6cc;background-image:url('/assets/law-bg-light.png');background-size:420px 420px;background-repeat:repeat;border-top:1px solid #0001;border-bottom:1px solid #0001}
 .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}
 .step{padding:30px;border-radius:28px;background:#f8f3e9;border:1px solid #0001}
 .step b{color:#c56e1e;font:700 14px Arial}
@@ -78,7 +78,7 @@ h2{font-size:clamp(40px,6vw,70px);line-height:.95;letter-spacing:-3px;margin:12p
 
 /* ---- Contact / Form ---- */
 .contact-grid{align-items:start}
-form{background:#17130f;color:#fff;padding:32px;border-radius:30px;box-shadow:0 25px 60px #0003}
+form{background-color:#0d1126;background-image:url('/assets/law-bg-dark.png');background-size:400px 400px;background-repeat:repeat;color:#fff;padding:32px;border-radius:30px;box-shadow:0 25px 60px #0005}
 label{display:block;font:14px Arial;margin-bottom:18px}
 input,select,textarea{width:100%;margin-top:8px;padding:14px 16px;border:1px solid #fff2;border-radius:15px;background:#fff0;color:#fff;outline:none}
 select option{color:#17130f}
@@ -87,9 +87,9 @@ input:focus,select:focus,textarea:focus{border-color:#d9822b}
 .success{display:none;background:#2b8a3e22;border:1px solid #5ec57655;color:#bff1c9;padding:13px;border-radius:14px;font:14px Arial;margin-bottom:18px}
 
 /* ---- Contact strip & footer ---- */
-.contact-strip{background:#d9822b;padding:45px 0}
+.contact-strip{background-color:#b8690a;background-image:url('/assets/law-bg-dark.png'),linear-gradient(135deg,#d9822b,#b86010);background-size:420px 420px,auto;background-repeat:repeat,no-repeat;background-blend-mode:overlay,normal;padding:45px 0}
 .contact-strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}
-footer{background:#17130f;color:#fff7;text-align:center;padding:28px;font:13px Arial}
+footer{background-color:#0d1126;background-image:url('/assets/law-bg-dark.png');background-size:500px 500px;background-repeat:repeat;color:#fff7;text-align:center;padding:28px;font:13px Arial}
 
 /* ---- Office signboard ---- */
 .office-signboard-badge{margin-top:24px;padding:20px 22px;background:#fff;border:1px solid #0001;border-radius:20px;box-shadow:0 8px 24px #00000008}
