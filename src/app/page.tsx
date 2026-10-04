@@ -4,6 +4,7 @@ import PracticeAreasSection from '@/components/PracticeAreasSection';
 import AboutSection from '@/components/AboutSection';
 import ProcessSection from '@/components/ProcessSection';
 import TeamSection from '@/components/TeamSection';
+import CrowdSection from '@/components/CrowdSection';
 import ConsultSection from '@/components/ConsultSection';
 import Footer from '@/components/Footer';
 import LangSwitcher from '@/components/LangSwitcher';
@@ -18,6 +19,7 @@ export default function HomePage() {
         <AboutSection />
         <ProcessSection />
         <TeamSection />
+        <CrowdSection />
         <ConsultSection />
       </main>
       <Footer />
