@@ -89,7 +89,7 @@ h2{font-size:clamp(40px,6vw,70px);line-height:.95;letter-spacing:-3px;margin:12p
 
 /* ---- About ---- */
 #about{background:rgba(245,240,230,0.86);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-#consult{background:rgba(245,240,230,0.84);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+#consult{margin:48px 0;background:rgba(245,240,230,0.84);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 #crowd-section{background:rgba(255,255,255,0.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .about-grid,.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}

@@ -22,4 +22,4 @@
 ## No installation required
 This is the standalone working version. It does not require Node.js, Next.js, React, or a backend server to open locally.
 
-The consultation form stores requests in browser localStorage and provides a list for reviewing and deleting saved requests. Requests are local to the browser and are not sent to a server. For a real online enquiry system, connect it to a backend/database before publishing.
+The consultation form opens a prefilled request in WhatsApp or Gmail. The website does not save consultation requests locally. For a real online enquiry system, connect it to a backend/database before publishing.
