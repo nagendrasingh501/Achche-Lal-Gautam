@@ -250,6 +250,7 @@ footer{background:rgba(10,12,26,0.92);color:#fff7;text-align:center;padding:28px
   nav{display:flex}
   .nav>.btn{order:2;min-height:36px;padding:6px 14px;font-size:12px;border-radius:18px}
   .hero,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero{padding-left:clamp(16px,4vw,32px);padding-right:clamp(16px,4vw,32px)}
   .portrait-card{max-width:560px;margin:auto}
   .process-grid{grid-template-columns:1fr}
   .section-head{align-items:start;flex-direction:column}
