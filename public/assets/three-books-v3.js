@@ -13,7 +13,7 @@ class ThreeBooks {
     init() {
         const root = this.container;
         root.innerHTML = `
-            <div id="bs-root" style="position:relative; width:100%; height:100%; min-height:560px; overflow:hidden; font-family:sans-serif; background:var(--bg, #fbf9f4);">
+            <div id="bs-root" style="position:relative; width:100%; height:100%; min-height:560px; overflow:hidden; font-family:sans-serif; background:transparent;">
                 <div id="bs-hero-word" style="pointer-events:none; position:absolute; left:50%; top:18%; transform:translateX(-50%) translateY(0); opacity:1; z-index:1; transition:all 0.5s ease-out; font-size:clamp(2.5rem,10vw,7rem); font-weight:800; line-height:0.85; letter-spacing:-0.015em; color:rgba(0,0,0,0.04); white-space:nowrap;">
                     Practice
                 </div>
@@ -703,7 +703,7 @@ class ThreeBooks {
             const b = bookInstances.find(bk => bk.cfg === selectedCfg);
             if (b) { b.orbTarget = Math.round(b.orbY / 6.2832) * 6.2832 + 6.2832; b.orbYv = Math.max(b.orbYv, 3); b.orbPhase = 'return'; b.orbXs.t = 0; }
             setTimeout(() => {
-                rootEl.style.background = '#fbf9f4';
+                rootEl.style.background = 'transparent';
                 applyMode(); camTo('hero');
                 let back = 0;
                 currentWindow.forEach((bi, i) => {

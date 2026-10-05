@@ -180,11 +180,13 @@ header{background:rgba(15,25,45,.96);border-bottom:1px solid rgba(198,163,95,.3)
 .nav>.btn{background:#c6a45e;color:#101a2c;border-color:rgba(244,226,179,.65);box-shadow:0 6px 20px rgba(6,12,24,.35)}
 .nav>.btn:hover{background:#d5b875;color:#101a2c;border-color:#ead59f;box-shadow:0 0 20px rgba(212,180,106,.28),0 10px 24px rgba(4,10,20,.35)}
 #home.hero{background-image:linear-gradient(90deg,rgba(245,240,230,.72) 0%,rgba(245,240,230,.56) 52%,rgba(245,240,230,.38) 100%),url("public/assets/justice-bg.jpg");background-size:cover;background-position:center}
+#services{background-image:url("public/assets/justice-bg.jpg");background-size:cover;background-position:center;background-attachment:fixed}
+@media(max-width:760px){#services{background-attachment:scroll}}
 @media(max-width:760px){#home.hero{background-position:center top}}
 </style></head><body>
 <header><div class="wrap nav"><a class="brand" href="#home"><span class="logo">⚖</span><span><b>Achche Lal Gautam</b><small>District Court Lawyer</small></span></a><div class="snav-pill" id="spotlightNav" role="navigation" aria-label="Main navigation"><ul class="snav-list"><li><a href="#about" class="snav-link" data-section="about" data-idx="0">About</a></li><li><a href="#services" class="snav-link" data-section="services" data-idx="1">Practice Areas</a></li><li><a href="#process" class="snav-link" data-section="process" data-idx="2">Process</a></li><li><a href="#contact" class="snav-link" data-section="contact" data-idx="3">Contact</a></li></ul><div class="snav-spotlight" id="snavSpotlight"></div><div class="snav-ambience" id="snavAmbience"></div></div><a class="btn" href="#consult">Book Consultation</a></div></header>
 <section id="home" class="hero"><div><div class="pill">⌖ District Unnao, Uttar Pradesh</div><h1><span class="ktl-wrap" aria-label="Justice"><span class="ktl-dot"></span><span class="ktl-j">J</span>ust<span class="ktl-i">ı</span>ce</span> with <em>clarity.</em></h1><p class="lead">I am <strong>Achche Lal Gautam</strong>, a Former Zila Panchayat Member and District Court Lawyer in Unnao. I assist clients across criminal, land & property, matrimonial, civil and related legal matters.</p><div class="actions"><a class="creepy-btn" href="#consult" id="heroCreepyBtn"><span class="creepy-eyes" id="heroEyes"><span class="creepy-eye"><span class="creepy-pupil" id="heroPupilL"></span></span><span class="creepy-eye"><span class="creepy-pupil" id="heroPupilR"></span></span></span><span class="creepy-cover">Request Consultation →</span><span class="creepy-ghost">Request Consultation →</span></a><a class="btn outline" href="#services">Explore Practice Areas</a></div><div class="stats"><div><span>Direct consultation</span></div><div><span>Court representation</span></div><div><span>Case-focused strategy</span></div></div></div><div class="portrait-card"><img class="portrait" src="assets/advocate-profile-achche-lal.png" alt="Achche Lal Gautam, District Court Lawyer"><div class="caption"><strong>Achche Lal Gautam</strong><br><span style="color:#fff9;font-size:13px">Former Zila Panchayat Member<br>District Court • Unnao</span></div></div></section>
-<section id="services" style="padding:0; margin:0; background:#fbf9f4; height:100vh; min-height:800px;">
+<section id="services" style="padding:0; margin:0; background:transparent; height:100vh; min-height:800px;">
   <div id="three-books-container" style="width:100%; height:100%;"></div>
 </section>
 
@@ -390,10 +392,11 @@ header{background:rgba(15,25,45,.96);border-bottom:1px solid rgba(198,163,95,.3)
 
 <section id="consult"><div class="wrap contact-grid"><div><div class="eyebrow" style="color:#b96818">Consultation</div><h2>Tell us about your matter.</h2><p class="lead">Submit a consultation request. This standalone website saves requests in this browser and works without a server.</p><div style="font:14px/2 Arial;color:#0009;margin-top:28px">◷ By appointment<br>⌖ <a href="https://maps.app.goo.gl/FH5DcM2fofRoXT566?g_st=aw" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Near SDM Judicial Court Collectorate, Kachari Parisar, Unnao, Uttar Pradesh 209801</a><br>☎ <a href="tel:+919839781903" style="color:inherit;font-weight:bold">+91 9839781903</a> / <a href="tel:+919792220999" style="color:inherit;font-weight:bold">+91 9792220999</a> (Chamber Helpline)</div></div><form id="consultForm"><div id="success" class="success">✓ Consultation request saved on this device.</div><div class="two"><label>Name<input required name="name" placeholder="Your name"></label><label>Phone<input required name="phone" placeholder="Phone number"></label></div><label>Practice area<select name="practiceArea"><option>Criminal Law</option><option>Land & Property</option><option>Marriage & Family</option><option>Civil Disputes</option><option>Other</option></select></label><label>Brief message<textarea required name="message" rows="5" placeholder="Briefly describe your matter"></textarea></label>
 <div style="display:flex; gap:10px; margin-top:20px; flex-wrap:wrap;">
+  <button class="btn gold" type="button" onclick="saveConsultationFromForm()">Save Consultation Request →</button>
   <button class="btn gold" type="button" onclick="sendToWhatsApp()" style="background:#25D366; color:white; border:none;">Send via WhatsApp</button>
   <button class="btn" type="button" onclick="sendToGmail()" style="background:#EA4335; color:white; border:none;">Send via Gmail</button>
 </div>
-</form></div></section>
+</form><div id="savedConsultations" style="grid-column:1 / -1;margin-top:20px"><h3 style="font-size:24px;margin-bottom:16px">Saved consultation requests</h3><p id="consultationStorageStatus" role="alert" style="font:14px/1.6 Arial;color:#8a1c1c"></p><div id="savedConsultationList" style="display:grid;gap:12px"></div></div></div></section>
 <section class="contact-strip" id="contact"><div class="wrap"><div>
   <div style="font:700 11px Arial;letter-spacing:3px;color:#0008;margin-bottom:14px;">GET IN TOUCH</div>
   <!-- SocialFlipButton -->
@@ -960,10 +963,111 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <script>
+const CONSULTATIONS_KEY = 'achcheLalConsultations';
+
+function setConsultationStorageStatus(message) {
+  const status = document.getElementById('consultationStorageStatus');
+  if(status) status.textContent = message;
+}
+
+function loadConsultationRequests() {
+  try {
+    const raw = localStorage.getItem(CONSULTATIONS_KEY);
+    if(!raw) return [];
+    const requests = JSON.parse(raw);
+    if(!Array.isArray(requests)) throw new Error('Saved consultation data is not a list.');
+    return requests;
+  } catch(error) {
+    console.error('Unable to load consultation requests.', error);
+    setConsultationStorageStatus('Unable to load saved requests from this browser.');
+    return null;
+  }
+}
+
+function renderConsultationRequests() {
+  const list = document.getElementById('savedConsultationList');
+  if(!list) return;
+  list.replaceChildren();
+  const requests = loadConsultationRequests();
+  if(!requests) return;
+  setConsultationStorageStatus('');
+  if(requests.length === 0) {
+    const empty = document.createElement('p');
+    empty.textContent = 'No requests saved in this browser.';
+    empty.style.cssText = 'font:14px/1.6 Arial;color:#0009';
+    list.append(empty);
+    return;
+  }
+  requests.forEach((request, index) => {
+    const card = document.createElement('article');
+    card.style.cssText = 'padding:20px;border:1px solid #0002;border-radius:18px;background:#fff9';
+    const name = document.createElement('strong');
+    name.textContent = request.name || 'Unnamed request';
+    const details = document.createElement('div');
+    details.style.cssText = 'font:13px/1.6 Arial;color:#0009';
+    const createdAt = request.createdAt ? new Date(request.createdAt).toLocaleString() : '';
+    details.textContent = [request.phone, request.practiceArea, createdAt].filter(Boolean).join(' · ');
+    const message = document.createElement('p');
+    message.style.cssText = 'font:14px/1.6 Arial;margin:12px 0 0;white-space:pre-wrap';
+    message.textContent = request.message || '';
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'btn';
+    remove.textContent = 'Delete';
+    remove.setAttribute('aria-label', 'Delete consultation request from ' + (request.name || 'unnamed client'));
+    remove.style.marginTop = '12px';
+    remove.addEventListener('click', () => deleteConsultationRequest(index));
+    card.append(name, details, message, remove);
+    list.append(card);
+  });
+}
+
+function saveConsultationRequest(data) {
+  const requests = loadConsultationRequests();
+  if(!requests) return false;
+  requests.unshift({...data, createdAt: new Date().toISOString()});
+  try {
+    localStorage.setItem(CONSULTATIONS_KEY, JSON.stringify(requests));
+    setConsultationStorageStatus('');
+    renderConsultationRequests();
+    return true;
+  } catch(error) {
+    console.error('Unable to save consultation request.', error);
+    setConsultationStorageStatus('Unable to save this request in the browser. Please check browser storage settings.');
+    return false;
+  }
+}
+
+function saveConsultationFromForm() {
+  const form = document.getElementById('consultForm');
+  if(!form.reportValidity()) return;
+  const data = Object.fromEntries(new FormData(form));
+  if(saveConsultationRequest(data)) {
+    document.getElementById('success').style.display = 'block';
+    form.reset();
+  }
+}
+
+function deleteConsultationRequest(index) {
+  const requests = loadConsultationRequests();
+  if(!requests || !requests[index]) return;
+  const name = requests[index].name || 'this request';
+  if(!window.confirm(`Delete the consultation request from ${name}?`)) return;
+  requests.splice(index, 1);
+  try {
+    localStorage.setItem(CONSULTATIONS_KEY, JSON.stringify(requests));
+    renderConsultationRequests();
+  } catch(error) {
+    console.error('Unable to delete consultation request.', error);
+    setConsultationStorageStatus('Unable to delete this request from the browser.');
+  }
+}
+
 function getFormMessage() {
   const form = document.getElementById('consultForm');
   if(!form.reportValidity()) return null; // trigger HTML5 validation
   const d = Object.fromEntries(new FormData(form));
+  if(!saveConsultationRequest(d)) return null;
   return `New Consultation Request
 
 Name: ${d.name}
@@ -990,6 +1094,8 @@ function sendToGmail() {
   const subject = 'Legal Consultation Request - ' + d.name;
   window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`, '_blank');
 }
+
+renderConsultationRequests();
 </script>
 <script>
 /* ── CreepyButton eye tracker ── */

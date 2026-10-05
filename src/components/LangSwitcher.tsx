@@ -111,6 +111,9 @@ const TRANSLATIONS: Record<Exclude<Lang, 'en'>, Record<string, string>> = {
     Other: 'अन्य',
     'Brief message': 'संक्षिप्त संदेश',
     'Save Consultation Request →': 'परामर्श अनुरोध सहेजें →',
+    'Saved consultation requests': 'सहेजे गए परामर्श अनुरोध',
+    'No requests saved in this browser.': 'इस ब्राउज़र में कोई अनुरोध सहेजा नहीं गया है।',
+    Delete: 'हटाएँ',
   },
   pa: {
     'District Court Lawyer': 'ਜ਼ਿਲ੍ਹਾ ਅਦਾਲਤ ਵਕੀਲ',
@@ -219,6 +222,9 @@ const TRANSLATIONS: Record<Exclude<Lang, 'en'>, Record<string, string>> = {
     Other: 'ਹੋਰ',
     'Brief message': 'ਸੰਖੇਪ ਸੁਨੇਹਾ',
     'Save Consultation Request →': 'ਸਲਾਹ ਦੀ ਬੇਨਤੀ ਸੁਰੱਖਿਅਤ ਕਰੋ →',
+    'Saved consultation requests': 'ਸੰਭਾਲੀਆਂ ਸਲਾਹ ਬੇਨਤੀਆਂ',
+    'No requests saved in this browser.': 'ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਕੋਈ ਬੇਨਤੀ ਸੰਭਾਲੀ ਨਹੀਂ ਹੈ।',
+    Delete: 'ਮਿਟਾਓ',
   },
   ur: {
     'District Court Lawyer': 'ضلعی عدالت وکیل',
@@ -327,6 +333,9 @@ const TRANSLATIONS: Record<Exclude<Lang, 'en'>, Record<string, string>> = {
     Other: 'دیگر',
     'Brief message': 'مختصر پیغام',
     'Save Consultation Request →': 'مشاورت کی درخواست محفوظ کریں ←',
+    'Saved consultation requests': 'محفوظ مشاورتی درخواستیں',
+    'No requests saved in this browser.': 'اس براؤزر میں کوئی درخواست محفوظ نہیں ہے۔',
+    Delete: 'حذف کریں',
   },
   bn: {
     'District Court Lawyer': 'জেলা আদালত আইনজীবী',
@@ -435,6 +444,9 @@ const TRANSLATIONS: Record<Exclude<Lang, 'en'>, Record<string, string>> = {
     Other: 'অন্যান্য',
     'Brief message': 'সংক্ষিপ্ত বার্তা',
     'Save Consultation Request →': 'পরামর্শের অনুরোধ সংরক্ষণ করুন →',
+    'Saved consultation requests': 'সংরক্ষিত পরামর্শের অনুরোধ',
+    'No requests saved in this browser.': 'এই ব্রাউজারে কোনো অনুরোধ সংরক্ষিত নেই।',
+    Delete: 'মুছুন',
   },
 };
 
