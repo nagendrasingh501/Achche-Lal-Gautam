@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 type ConsultationRequest = {
   id: string;
@@ -86,18 +86,6 @@ export default function ConsultSection() {
     persistRequests(requests.filter((item) => item.id !== id));
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    if (saveConsultation({
-      name: String(formData.get('name') ?? ''),
-      phone: String(formData.get('phone') ?? ''),
-      practiceArea: String(formData.get('practiceArea') ?? ''),
-      message: String(formData.get('message') ?? ''),
-    })) form.reset();
-  }
-
   function getFormMessage() {
     const form = formRef.current;
     if (!form) return null;
@@ -166,7 +154,7 @@ export default function ConsultSection() {
           </div>
         </div>
 
-        <form id="consultForm" ref={formRef} onSubmit={handleSubmit}>
+        <form id="consultForm" ref={formRef} onSubmit={(event) => event.preventDefault()}>
           {success && (
             <div className="success" style={{ display: 'block' }}>
               {success}
@@ -199,9 +187,6 @@ export default function ConsultSection() {
           </label>
 
           <div style={{ display: 'flex', gap: 10, marginTop: 20, flexWrap: 'wrap' }}>
-            <button className="btn gold" type="submit" style={{ background: '#17130f', color: 'white' }}>
-              Save Consultation Request →
-            </button>
             <button
               className="btn"
               type="button"
